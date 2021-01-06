@@ -9,9 +9,28 @@ const SingleMovie = ( { movies }) => {
 
     console.log(movie);
 
+    
     return (
-        <div>
-            <p>Should be in the singlemovie component now</p>
+        <div className="movieInfo">
+            <button>Update Info</button>
+            <button>Delete Movie</button>
+            <h1>{movie.title}</h1>
+            <img alt="Poster for selected movie" src={movie.posterurl}></img>
+            <p>Plot: {movie.storyline}</p>
+            <p>Actors:</p>
+            <ul>
+            { movie.actors ? movie.actors.map((actor) => {
+                return <li>{actor}</li>
+            }) : null}
+            </ul>
+            <p>Genres:</p>
+            <ul>
+                { movie.genres ? movie.genres.map((genre) => {
+                    return <li>{genre}</li>
+                }) : null}
+            </ul>
+            <p>Release Date: {movie.releaseDate}</p>
+            <p>Rating: {movie.imdbRating}/10</p>
         </div>
     );
 };

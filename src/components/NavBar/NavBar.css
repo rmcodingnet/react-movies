@@ -1,0 +1,10 @@
+.navbar {
+    display: flex; 
+    flex-direction: row;
+    padding: 20px; 
+    background-color: lightcoral;
+}
+
+.nav-item {
+    margin: 0 10px;
+}

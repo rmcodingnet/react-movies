@@ -34,16 +34,6 @@ function App() {
         />
         <Route
           exact={true}
-          path="/"
-          render={(props) => (
-            <MoviesList
-              movies={movies}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          exact={true}
           path="/movies/:movieID"
           render={(props) => {
             <SingleMovie
@@ -51,6 +41,16 @@ function App() {
               {...props}
             />
           }}
+        />
+        <Route
+          exact={true}
+          path="/"
+          render={(props) => (
+            <MoviesList
+              movies={movies}
+              {...props}
+            />
+          )}
         />
       </Switch>
     </div>

@@ -18,6 +18,19 @@ function App() {
     setMovies(movies);
   }
 
+  const updateMovie = (movieId, newInfo) => {
+    const updatedVal = movies.map( m => m.id === movieId ? {...m, newInfo} : m);
+    setMovies(updatedVal);
+  }
+
+  const deleteMovie = (movieId) => {
+    const moveToDelete = movies.findIndex(movies.id === movieId);
+    movies.splice(moveToDelete);
+    setMovies(movies)
+  }
+
+
+
   return (
     <div className="App">
       <NavBar />
@@ -35,12 +48,14 @@ function App() {
         <Route
           exact={true}
           path="/movies/:movieID"
-          render={(props) => {
+          render={(props) => (
             <SingleMovie
               movies={movies}
+              updateMovie={updateMovie}
+              deleteMovie={deleteMovie}
               {...props}
             />
-          }}
+          )}
         />
         <Route
           exact={true}

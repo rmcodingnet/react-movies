@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const MoviesList = ({ movies }) => {
     return (
         <div>
+            <Link to={'/new'}><button>Add New Movie</button></Link>
             <table>
                 <thead>
                     <tr>

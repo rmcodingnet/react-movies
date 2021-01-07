@@ -33,8 +33,10 @@ const NewMovie = ({ addNewMovie, history }) => {
             <form className="form" onSubmit={(e) => handleSubmit(e)}>
                 <label>Movie Title</label>
                 <input type="text" value={values.title} onChange={(e) => handleChangeValues({ title: e.target.value })}></input>
+                <br/>
                 <label>Release Date</label>
                 <input type="text" value={values.releaseDate} onChange={(e) => handleChangeValues({ releaseDate: e.target.value })}></input>
+                <br/>
                 <button type="submit">Add Movie</button>
             </form>
         </div>

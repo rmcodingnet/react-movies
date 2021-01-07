@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const UpdateForm = ({ movie, updateMovie }) => {
+const UpdateForm = ({ movie, updateMovie, history }) => {
     const [values, setValues] = useState({});
 
     useEffect(() => {
@@ -13,18 +14,11 @@ const UpdateForm = ({ movie, updateMovie }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // const newElem = {
-        //     id: uuidv4(), // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
-        //     title: values.title,
-        //     releaseDate: values.releaseDate,
-
-        // }
-        // addNewMovie(newElem)
-        // console.log(newElem);
-        // redirectWithId(newElem.id)
-        updateMovie(values.id,values);
+        updateMovie(values.id, values);
+        history.push("/");
 
     }
+
 
 
     return (
@@ -42,4 +36,4 @@ const UpdateForm = ({ movie, updateMovie }) => {
     );
 };
 
-export default UpdateForm;
+export default withRouter(UpdateForm);

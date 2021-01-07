@@ -20,13 +20,9 @@ function App() {
   }
 
   const updateMovie = (movieId, newInfo) => {
-    console.log("moiveId = ");
-    console.log(movieId);
-    console.log("newInfo = ");
-    console.log(newInfo)
-    const updatedVal = movies.map( m => m.id === movieId ? {...m, newInfo} : m);
-    console.log(updatedVal);
-    setMovies(updatedVal);
+    const movieToUpdate = movies.findIndex(movie => movie.id === movieId)
+    movies.splice(movieToUpdate, 1, newInfo)
+    setMovies(movies);
   }
 
   const deleteMovie = (movieId) => {

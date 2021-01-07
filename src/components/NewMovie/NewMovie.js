@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 const { v4: uuidv4 } = require('uuid');
 
 const NewMovie = ({ addNewMovie, history }) => {
-    const [values, setValues] = useState({})
+    const [values, setValues] = useState({title: "", posterurl: "", storyline: "", actor: "", genre: "", releaseDate: "", imdbRating: "" })
     const [actors, setActors] = useState([])
     const [genres, setGenres] = useState([])
 
@@ -15,7 +15,9 @@ const NewMovie = ({ addNewMovie, history }) => {
         e.preventDefault()
         let valToAddToArray = values.actor;
         actors.push(valToAddToArray);
-        values.actor = "";
+        setValues((values) => {
+            return {...values, actor: ""}
+        })
         setActors(actors)
     }
 
@@ -24,6 +26,9 @@ const NewMovie = ({ addNewMovie, history }) => {
         let valToAddToArray = values.genre;
         genres.push(valToAddToArray);
         values.genre = "";
+        setValues((values) => {
+            return {...values, genre: ""}
+        })
         setGenres(genres)
     }
 

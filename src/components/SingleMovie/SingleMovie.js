@@ -1,19 +1,35 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, withRouter } from 'react-router-dom';
+import UpdateForm from '../UpdateForm/UpdateForm';
 
 
-const SingleMovie = ( { movies }) => {
+const SingleMovie = ( { movies, updateMovie, deleteMovie, history }) => {
     const { movieID } = useParams();
+
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
+
 
     const movie = movies.length > 0 && movies.find(item => item.id === movieID);
 
     console.log(movie);
 
+    const updateForm = showUpdateForm ? <UpdateForm movie={movie} updateMovie={updateMovie}/> : null;
+
+    const onDeleteButtonClickHandler = () => {
+        deleteMovie(movieID);
+        history.push('/');
+
+    }
+
+    const onUpdateButtonClickHandler = () => {
+        setShowUpdateForm(true)
+    }
     
     return (
         <div className="movieInfo">
-            <button>Update Info</button>
-            <button>Delete Movie</button>
+            <button onClick={onUpdateButtonClickHandler}>Update Info</button>
+            <button onClick={onDeleteButtonClickHandler}>Delete Movie</button>
+            {updateForm}
             <h1>{movie.title}</h1>
             <img alt="Poster for selected movie" src={movie.posterurl}></img>
             <p>Plot: {movie.storyline}</p>
@@ -35,4 +51,4 @@ const SingleMovie = ( { movies }) => {
     );
 };
 
-export default SingleMovie;
+export default withRouter(SingleMovie);

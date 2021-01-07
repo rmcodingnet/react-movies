@@ -35,14 +35,14 @@ const SingleMovie = ( { movies, updateMovie, deleteMovie, history }) => {
             <p>Plot: {movie.storyline}</p>
             <p>Actors:</p>
             <ul>
-            { movie.actors ? movie.actors.map((actor) => {
-                return <li>{actor}</li>
+            { movie.actors ? movie.actors.map((actor, index) => {
+                return <li key={index}>{actor}</li>
             }) : null}
             </ul>
             <p>Genres:</p>
             <ul>
-                { movie.genres ? movie.genres.map((genre) => {
-                    return <li>{genre}</li>
+                { movie.genres ? movie.genres.map((genre, index) => {
+                    return <li key={index}>{genre}</li>
                 }) : null}
             </ul>
             <p>Release Date: {movie.releaseDate}</p>

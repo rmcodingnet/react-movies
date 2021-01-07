@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar';
 import NewMovie from './components/NewMovie/NewMovie';
 import MoviesList from './components/MoviesList/MoviesList';
 import SingleMovie from './components/SingleMovie/SingleMovie';
+import Footer from './components/Footer/Footer';
 function App() {
 
   const [movies, setMovies] = useState([])
@@ -19,13 +20,18 @@ function App() {
   }
 
   const updateMovie = (movieId, newInfo) => {
+    console.log("moiveId = ");
+    console.log(movieId);
+    console.log("newInfo = ");
+    console.log(newInfo)
     const updatedVal = movies.map( m => m.id === movieId ? {...m, newInfo} : m);
+    console.log(updatedVal);
     setMovies(updatedVal);
   }
 
   const deleteMovie = (movieId) => {
-    const moveToDelete = movies.findIndex(movies.id === movieId);
-    movies.splice(moveToDelete);
+    const movieToDelete = movies.findIndex(movie => movie.id === movieId);
+    movies.splice(movieToDelete, 1);
     setMovies(movies)
   }
 
@@ -68,6 +74,7 @@ function App() {
           )}
         />
       </Switch>
+      <Footer/>
     </div>
   );
 }

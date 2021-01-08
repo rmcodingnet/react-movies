@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './MoviesList.css';
 
 const MoviesList = ({ movies }) => {
     return (
-        <div>
-            <Link to={'/new'}><button>Add New Movie</button></Link>
-            <table>
+        <div className="listContainer">
+            <Link to={'/new'}><button className="addMovieBtn">Add New Movie</button></Link>
+            <table className="movieTable">
                 <thead>
                     <tr>
                         <th>ID</th>

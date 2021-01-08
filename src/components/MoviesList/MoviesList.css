@@ -1,0 +1,46 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.addMovieBtn {
+    margin-bottom: 2vh;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(240, 195, 128);
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center ;
+    transition: all 0.2s;
+    font-size: medium;
+    width: 100%;
+}
+
+.addMovieBtn:hover {
+    background-color: rgb(240, 195, 128);
+}
+
+.movieTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* .movieTable td, .movieTable th {
+    border-bottom: 1px solid gray
+} */
+
+.movieTable tr:hover {
+    background-color:rgb(245, 215, 169);
+}
+
+.movieTable th {
+    text-align: center;
+    background-color: rgb(240, 128, 128);
+}
+
+.movieTable td {
+    text-align: center;
+}
+
+.movieTable td a {
+   color: rgb(240, 128, 128);
+}

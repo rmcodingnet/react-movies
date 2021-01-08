@@ -10,3 +10,8 @@
 .nav-item {
     margin: 0 10px;
 }
+
+.nav-item a {
+    color: rgb(245, 215, 169);
+    text-decoration: none
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import './UpdateForm.css'
 
 const UpdateForm = ({ movie, updateMovie, history }) => {
     const [values, setValues] = useState({});

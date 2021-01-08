@@ -36,7 +36,7 @@ const NewMovie = ({ addNewMovie, history }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const newElem = {
-            id: uuidv4(), // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+            id: uuidv4(),
             title: values.title,
             posterurl: values.posterurl,
             storyline: values.storyline,
@@ -46,11 +46,8 @@ const NewMovie = ({ addNewMovie, history }) => {
             imdbRating: values.imdbRating
         }
         addNewMovie(newElem);
-        console.log(newElem);
         redirectWithId(newElem.id);
-
     }
-
 
     const redirectWithId = (id) => {
         history.push(`/movies/${id}`)

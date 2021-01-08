@@ -9,17 +9,13 @@ const SingleMovie = ( { movies, updateMovie, deleteMovie, history }) => {
 
     const [showUpdateForm, setShowUpdateForm] = useState(false);
 
-
     const movie = movies.length > 0 && movies.find(item => item.id === movieID);
-
-    console.log(movie);
 
     const updateForm = showUpdateForm ? <UpdateForm movie={movie} updateMovie={updateMovie}/> : null;
 
     const onDeleteButtonClickHandler = () => {
         deleteMovie(movieID);
         history.push('/');
-
     }
 
     const onUpdateButtonClickHandler = () => {

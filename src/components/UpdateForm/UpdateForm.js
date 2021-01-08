@@ -29,15 +29,11 @@ const UpdateForm = ({ movie, updateMovie, history }) => {
         setValues({...values, ...genres});
     }
 
-
     const handleSubmit = (e) => {
         e.preventDefault()
         updateMovie(values.id, values);
         history.push("/");
-
     }
-
-
 
     return (
         <div className="form-container">

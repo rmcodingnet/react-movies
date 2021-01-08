@@ -25,7 +25,6 @@ const MoviesList = ({ movies }) => {
                                 <td><Link to={`/movies/${movie.id}`}>Click for more info</Link></td>
                             </tr>
                         )
-
                     }) : null}
                 </tbody>
             </table>

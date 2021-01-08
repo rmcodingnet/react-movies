@@ -31,8 +31,6 @@ function App() {
     setMovies(movies)
   }
 
-
-
   return (
     <div className="App">
       <NavBar />

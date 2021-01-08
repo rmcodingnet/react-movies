@@ -25,10 +25,6 @@
     width: 100%;
 }
 
-/* .movieTable td, .movieTable th {
-    border-bottom: 1px solid gray
-} */
-
 .movieTable tr:hover {
     background-color:rgb(245, 215, 169);
 }

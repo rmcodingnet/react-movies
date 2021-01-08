@@ -4,6 +4,7 @@
     padding: 20px; 
     background-color: lightcoral;
     margin-bottom: 40px;
+    justify-content: center;
 }
 
 .nav-item {

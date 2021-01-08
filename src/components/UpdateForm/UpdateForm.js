@@ -3,21 +3,31 @@ import { withRouter } from 'react-router-dom';
 
 const UpdateForm = ({ movie, updateMovie, history }) => {
     const [values, setValues] = useState({});
-    const [actors, setActors] = useState([])
+    const [actors, setActors] = useState([]);
+    const [genres, setGenres] = useState([]); 
 
     useEffect(() => {
         setValues(movie)
         setActors(movie.actors)
+        setGenres(movie.genres)
     }, [movie])
 
     const handleChangeValues = (newValue) => {
         setValues({ ...values, ...newValue });
     }
 
-    const HandleActorChanges = (pos, newVal) => {
-        actors.splice(pos,1,newVal)
+    const handleActorChanges = (newVal, pos) => {
+        actors.splice(pos,1,newVal);
         setActors(actors);
+        setValues({...values, ...actors});
     }
+
+    const handleGenreChanges = (newVal, pos) => {
+        genres.splice(pos,1,newVal);
+        setGenres(genres);
+        setValues({...values, ...genres});
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -44,16 +54,20 @@ const UpdateForm = ({ movie, updateMovie, history }) => {
                 {actors ? actors.map((actor, index) => {
                     return (
                         <>
-                            <input type="text" value={actors[index]} onChange={(e) => HandleActorChanges(index,e.target.value)} />
+                            <input key={index} type="text" value={actor || ""} onChange={(e) => handleActorChanges(e.target.value,index)} />
                             <br />
                         </>
                     )
                 }) : null}
-                {/* <input type="text" value={values.actor} onChange={(e) => handleChangeValues({ actor: e.target.value })}/>
-                <br /> */}
                 <label>Genres</label>
-                {/* <input type="text" value={values.genre} onChange={(e) => handleChangeValues({ genre: e.target.value })}/> */}
-                <br />
+                {genres ? genres.map((genre, index) => {
+                    return (
+                        <>
+                            <input key={index} type="text" value={genre || ""} onChange={(e) => handleGenreChanges(e.target.value,index)} />
+                            <br />
+                        </>
+                    )
+                }) : null}
                 <label>Release Date</label>
                 <input type="text" value={values.releaseDate || ""} onChange={(e) => handleChangeValues({ releaseDate: e.target.value })} />
                 <br />

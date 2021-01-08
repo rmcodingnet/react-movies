@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import './NewMovie.css'
 const { v4: uuidv4 } = require('uuid');
 
 const NewMovie = ({ addNewMovie, history }) => {
@@ -69,11 +70,11 @@ const NewMovie = ({ addNewMovie, history }) => {
                 <br />
                 <label>Actors</label>
                 <input type="text" value={values.actor} onChange={(e) => handleChangeValues({ actor: e.target.value })}/>
-                <button onClick={(e) => handleActorChange(e)}>Add Actor</button>
+                <button className="addBtn" onClick={(e) => handleActorChange(e)}>Add Actor</button>
                 <br />
                 <label>Genres</label>
                 <input type="text" value={values.genre} onChange={(e) => handleChangeValues({ genre: e.target.value })}/>
-                <button onClick={(e) => handleGenreChange(e)}>Add Genre</button>
+                <button className="addBtn" onClick={(e) => handleGenreChange(e)}>Add Genre</button>
                 <br />
                 <label>Release Date</label>
                 <input type="text" value={values.releaseDate} onChange={(e) => handleChangeValues({ releaseDate: e.target.value })} />
@@ -81,7 +82,7 @@ const NewMovie = ({ addNewMovie, history }) => {
                 <label>Rating </label>
                 <input type="number" min="0" max="10" value={values.imdbRating} onChange={(e) => handleChangeValues({ imdbRating: e.target.value })} />
                 <br />
-                <button type="submit">Add Movie</button>
+                <button type="submit" className="submitBtn">Add Movie</button>
             </form>
         </div>
     )

@@ -1,0 +1,51 @@
+input[type=text], input[type=number], textarea {
+    width: 99%;
+    padding: 12px 20px;
+    margin: 1vh;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+input[type=number] {
+    appearance: textfield;
+}
+
+label, button {
+    margin-left: 1vh;
+}
+
+.addBtn {
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(240, 195, 128);
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center ;
+    transition: all 0.2s;
+    font-size: medium;
+}
+
+.addBtn:hover {
+    background-color: rgb(240, 195, 128);
+}
+
+.addBtn:active {
+    box-shadow: inset 0px 0px 30px rgb(226, 165, 74);
+}
+
+.submitBtn {
+    border: 0.1em solid rgb(240, 128, 128);
+    padding: 0.35em 1.2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center ;
+    transition: all 0.2s;
+    font-size: medium;
+}
+
+.submitBtn:hover {
+    background-color: rgb(240, 128, 128);
+}

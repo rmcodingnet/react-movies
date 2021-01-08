@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import UpdateForm from '../UpdateForm/UpdateForm';
+import './SingleMovie.css'
 
 
 const SingleMovie = ( { movies, updateMovie, deleteMovie, history }) => {
@@ -27,26 +28,26 @@ const SingleMovie = ( { movies, updateMovie, deleteMovie, history }) => {
     
     return (
         <div className="movieInfo">
-            <button onClick={onUpdateButtonClickHandler}>Update Info</button>
-            <button onClick={onDeleteButtonClickHandler}>Delete Movie</button>
+            <button className="funcBtn" onClick={onUpdateButtonClickHandler}>Update Info</button>
+            <button className="funcBtn" onClick={onDeleteButtonClickHandler}>Delete Movie</button>
             {updateForm}
             <h1>{movie.title}</h1>
             <img alt="Poster for selected movie" src={movie.posterurl}></img>
-            <p>Plot: {movie.storyline}</p>
-            <p>Actors:</p>
+            <p className="plot">Plot: {movie.storyline}</p>
+            <p className="actors">Actors:</p>
             <ul>
             { movie.actors ? movie.actors.map((actor, index) => {
                 return <li key={index}>{actor}</li>
             }) : null}
             </ul>
-            <p>Genres:</p>
+            <p className="genres">Genres:</p>
             <ul>
                 { movie.genres ? movie.genres.map((genre, index) => {
                     return <li key={index}>{genre}</li>
                 }) : null}
             </ul>
-            <p>Release Date: {movie.releaseDate}</p>
-            <p>Rating: {movie.imdbRating}/10</p>
+            <p className="releaseDate">Release Date: {movie.releaseDate}</p>
+            <p className="rating">Rating: {movie.imdbRating}/10</p>
         </div>
     );
 };

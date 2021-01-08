@@ -1,0 +1,43 @@
+.movieInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.funcBtn {
+    margin-bottom: 2vh;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(240, 195, 128);
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center ;
+    transition: all 0.2s;
+    font-size: medium;
+    width: 100%;
+    background-color: white;
+}
+
+img {
+    width: 25%;
+}
+
+.funcBtn:hover {
+    background-color: rgb(240, 195, 128);
+}
+
+.funcBtn:active {
+    box-shadow: inset 0px 0px 30px rgb(226, 165, 74);
+}
+
+ul {
+    list-style: none;
+    width: 25%;
+}
+
+.plot, .actors, .genres, .releaseDate, .rating {
+    width: 25%
+}
+
+

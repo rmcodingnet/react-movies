@@ -43,6 +43,7 @@ const NewMovie = ({ addNewMovie, history }) => {
     const deleteGenre = (e, pos) => {
         e.preventDefault();
         values.genres.splice(pos, 1);
+        setValues({ ...values, ...values.genres });
     }
 
     const handleSubmit = (e) => {

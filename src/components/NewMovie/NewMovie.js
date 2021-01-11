@@ -4,44 +4,56 @@ import './NewMovie.css'
 const { v4: uuidv4 } = require('uuid');
 
 const NewMovie = ({ addNewMovie, history }) => {
-    const [values, setValues] = useState({title: "", posterurl: "", storyline: "", actor: "", genre: "", releaseDate: "", imdbRating: "" })
-    const [actors, setActors] = useState([])
-    const [genres, setGenres] = useState([])
+    const [values, setValues] = useState({ title: "", posterurl: "", storyline: "", actors: [], genres: [], releaseDate: "", imdbRating: "" })
 
     const handleChangeValues = (newValue) => {
         setValues({ ...values, ...newValue });
     }
 
-    const handleActorChange = (e) => {
-        e.preventDefault()
-        let valToAddToArray = values.actor;
-        actors.push(valToAddToArray);
-        setValues((values) => {
-            return {...values, actor: ""}
-        })
-        setActors(actors)
+    const addActor = (e) => {
+        e.preventDefault();
+        values.actors.push("")
+        setValues({ ...values, ...values.actors });
     }
 
-    const handleGenreChange = (e) => {
-        e.preventDefault()
-        let valToAddToArray = values.genre;
-        genres.push(valToAddToArray);
-        values.genre = "";
-        setValues((values) => {
-            return {...values, genre: ""}
-        })
-        setGenres(genres)
+    const updateActor = (newVal, pos) => {
+        console.log(pos)
+        values.actors.splice(pos, 1, newVal);
+        setValues({ ...values, ...values.actors });
+    }
+
+    const deleteActor = (e, pos) => {
+        e.preventDefault();
+        values.actors.splice(pos, 1);
+        setValues({...values, ...values.actors})
+        
+    }
+
+    const addGenre = (e) => {
+        e.preventDefault();
+        values.genres.push("");
+        setValues({...values, ...values.genres});
+    }
+
+    const updateGenre = (newVal, pos) => {
+        values.genres.splice(pos, 1, newVal);
+        setValues({ ...values, ...values.genres })
+    }
+
+    const deleteGenre = (e, pos) => {
+        e.preventDefault();
+        values.genres.splice(pos, 1);
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const newElem = {
             id: uuidv4(),
             title: values.title,
             posterurl: values.posterurl,
             storyline: values.storyline,
-            actors: actors,
-            genres: genres,
+            actors: values.actors,
+            genres: values.genres,
             releaseDate: values.releaseDate,
             imdbRating: values.imdbRating
         }
@@ -63,15 +75,29 @@ const NewMovie = ({ addNewMovie, history }) => {
                 <input type="text" value={values.posterurl} onChange={(e) => handleChangeValues({ posterurl: e.target.value })} />
                 <br />
                 <label>Plot</label>
-                <textarea type="text" value={values.storyline} onChange={(e) => handleChangeValues({ storyline: e.target.value })}/>
+                <textarea type="text" value={values.storyline} onChange={(e) => handleChangeValues({ storyline: e.target.value })} />
                 <br />
                 <label>Actors</label>
-                <input type="text" value={values.actor} onChange={(e) => handleChangeValues({ actor: e.target.value })}/>
-                <button className="addBtn" onClick={(e) => handleActorChange(e)}>Add Actor</button>
+                {values.actors.length > 0 ? values.actors.map((actor, index) => {
+                    return (
+                        <>
+                            <input key={index} type="text" value={actor || ""} onChange={(e) => updateActor(e.target.value, index)} />
+                            <button className="deleteBtn" onClick={(e) => deleteActor(e, index)}>Delete Actor </button>
+                        </>
+                    )
+                }) : null}
+                <button className="addBtn" onClick={(e) => addActor(e)}>Add Actor</button>
                 <br />
                 <label>Genres</label>
-                <input type="text" value={values.genre} onChange={(e) => handleChangeValues({ genre: e.target.value })}/>
-                <button className="addBtn" onClick={(e) => handleGenreChange(e)}>Add Genre</button>
+                {values.genres.length > 0 ? values.genres.map((genre, index) => {
+                    return (
+                        <>
+                            <input key={index} type="text" value={genre || ""} onChange={(e) => updateGenre(e.target.value, index)} />
+                            <button className="deleteBtn" onClick={(e) => deleteGenre(e, index)}>Delete Genre</button>
+                        </>
+                    )
+                }) : null }
+                <button className="addBtn" onClick={(e) => addGenre(e)}>Add Genre</button>
                 <br />
                 <label>Release Date</label>
                 <input type="text" value={values.releaseDate} onChange={(e) => handleChangeValues({ releaseDate: e.target.value })} />
